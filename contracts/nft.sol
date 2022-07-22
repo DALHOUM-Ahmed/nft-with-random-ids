@@ -976,17 +976,19 @@ contract newerRandom {
     }
 }
 
-contract Depth_of_the_Universe_Fish is newerRandom(1, 1500), ERC721('Depth_of_the_Universe_Fish', 'DOTUF') {
+contract Depth______ is newerRandom(1, 1500), ERC721('Depth_of_the_Universe_Fish', 'DOTUF') {
     uint256 public price = 10000000000000;
     bool _paused = false;
 
     address public liquidityAddress = 0xf9013432B10E1F446bb19D5b7C15baB43E9C3867;
     address public projectAddress = 0x42C48536C1777663Ec4047c0134B261Eb7eDdFde;
 
+    uint256 public totalSupply;
+
     constructor() {}
 
     modifier onlyOwner() {
-        require(msg.sender == projectAddress, 'Depth_of_the_Universe_Fish : only owner');
+        require(msg.sender == projectAddress, 'GoldenYears : only owner');
         _;
     }
 
@@ -1008,9 +1010,10 @@ contract Depth_of_the_Universe_Fish is newerRandom(1, 1500), ERC721('Depth_of_th
     }
 
     function publicMint() external payable {
-        require(msg.value == price, 'Depth_of_the_Universe_Fish : wrong minting price !');
-        require(!_paused, 'Depth_of_the_Universe_Fish : Minting is paused');
+        require(msg.value == price, 'GoldenYears : wrong minting price !');
+        require(!_paused, 'GoldenYears : Minting is paused');
         uint256 tokenID = getNextRandom();
+        totalSupply++;
         _safeMint(msg.sender, tokenID);
     }
 
